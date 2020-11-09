@@ -34,33 +34,26 @@ void createList(int data){
 
 //Insert element in the list
 void insert(int data, int pos){
-    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node)); //C++: new Node()
+    Node *newNode = new Node();
     newNode->key = data;
     newNode->next = NULL;
 
-    struct Node *currentNode = head;
+    Node *currentNode = head;
     int count = 1;
 
-    //Create head node if list is empty.
-    if (head == NULL){
-        printf("Sorry! List is empty.");
-    }
-
     //Insert node at first position
-    else if (pos == 1){
+    if (pos == 1){
         newNode->next = head;
         head = newNode;
     }
 
     //Insert node in remaining list
-    else{
-        while (count<pos-1 && currentNode != NULL){
-            currentNode = currentNode->next;
-            count++;
-        }
-        newNode->next = currentNode->next;
-        currentNode->next = newNode;
+    while (count<pos-1 && currentNode != NULL){
+        currentNode = currentNode->next;
+        count++;
     }
+    newNode->next = currentNode->next;
+    currentNode->next = newNode;
 }
 
 //Print the linked list
