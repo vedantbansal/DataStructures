@@ -34,17 +34,18 @@ void createList(int data){
 
 //Insert element in the list
 void insert(int data, int pos){
-    Node *newNode = new Node();
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
     newNode->key = data;
     newNode->next = NULL;
 
-    Node *currentNode = head;
+    struct Node *currentNode = head;
     int count = 1;
 
     //Insert node at first position
     if (pos == 1){
         newNode->next = head;
         head = newNode;
+        return;
     }
 
     //Insert node in remaining list
