@@ -42,26 +42,19 @@ void insert(int data, int pos){
     Node *currentNode = head;
     int count = 1;
 
-    //Create head node if list is empty.
-    if (head == NULL){
-        cout<<"Sorry! List is empty.";
-    }
-
     //Insert node at first position
-    else if (pos == 1){
+    if (pos == 1){
         newNode->next = head;
         head = newNode;
     }
 
     //Insert node in remaining list
-    else{
-        while (count<pos-1 && currentNode != NULL){
-            currentNode = currentNode->next;
-            count++;
-        }
-        newNode->next = currentNode->next;
-        currentNode->next = newNode;
+    while (count<pos-1 && currentNode != NULL){
+        currentNode = currentNode->next;
+        count++;
     }
+    newNode->next = currentNode->next;
+    currentNode->next = newNode;
 }
 
 //Print the linked list
